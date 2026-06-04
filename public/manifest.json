@@ -1,0 +1,21 @@
+{
+  "short_name": "Agentic Realty",
+  "name": "Agentic Realty: AI sales agent for real estate",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0a0f0c",
+  "background_color": "#0a0f0c"
+}

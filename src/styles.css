@@ -1,0 +1,484 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Surfaces / canvas (light fallback — site ships in .dark) */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.1450 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.1450 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.1450 0 0);
+
+  /* Brand — Modern Wealth (emerald + gold). Light mode leads with a DEEP
+     emerald so emerald-as-text and emerald CTAs stay AA-legible on off-white. */
+  --primary: #0a6b4f;
+  --primary-foreground: #ffffff;
+  --primary-soft: #0a6b4f14;
+  --primary-line: #0a6b4f4d;
+
+  --secondary: oklch(0.9700 0 0);
+  --secondary-foreground: oklch(0.2050 0 0);
+  --muted: oklch(0.9700 0 0);
+  --muted-foreground: oklch(0.5560 0 0);
+  --accent: oklch(0.9700 0 0);
+  --accent-foreground: oklch(0.2050 0 0);
+  --destructive: #ff5c5c;
+  --destructive-foreground: #ffffff;
+  --border: oklch(0.9220 0 0);
+  --input: oklch(0.9220 0 0);
+  --ring: var(--primary);
+
+  /* Agentic Realty surface ramp (light) */
+  --canvas: #f6f7f4;
+  --surface-1: #ffffff;
+  --surface-2: #eef0ec;
+  --surface-3: #e4e7e1;
+  --surface-glow: #2bcb8d0f;
+  --border-subtle: #e0e3dd;
+  --border-strong: #c9cdc5;
+  --text-primary: #0a0f0c;
+  --text-secondary: #44514a;
+  --text-muted: #6f7b73;
+  --text-disabled: #aab2ab;
+
+  /* Liquid-panel shadow tuned for light — much gentler than dark */
+  --liquid-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -40px 80px -40px rgba(0, 0, 0, 0.08),
+    0 30px 70px -40px rgba(0, 0, 0, 0.18),
+    0 0 80px -40px rgba(43, 203, 141, 0.12);
+  --liquid-glow: radial-gradient(circle, rgba(43, 203, 141, 0.08), transparent 65%);
+
+  /* Accent ramp (light). emerald = brand/success; gold = premium; lime =
+     DEMOTED "automation alive" spark only — darkened here to survive on white. */
+  --accent-green: #0a6b4f;
+  --accent-green-soft: #0a6b4f1a;
+  --accent-green-line: #0a6b4f66;
+  --accent-gold: #9a7b2e;
+  --accent-gold-soft: #9a7b2e1a;
+  --accent-gold-line: #9a7b2e66;
+  --accent-lime: #5f8f1f;
+  --accent-lime-soft: #5f8f1f1a;
+  --accent-orange: #c2710c;
+  --accent-orange-soft: #c2710c14;
+  --accent-pink: #c026a8;
+  --accent-pink-soft: #c026a814;
+  --accent-red: #d13d3d;
+  --accent-red-soft: #d13d3d14;
+
+  --font-sans: "Geist", "Inter Tight", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Geist Mono", "JetBrains Mono", ui-monospace, "SF Mono", Menlo,
+    Consolas, monospace;
+  /* Display serif for headlines — buys "real-estate premium" up top while
+     Geist keeps the product/UI credible. */
+  --font-display: "Fraunces", "Playfair Display", Georgia, "Times New Roman",
+    serif;
+
+  --radius: 1.5rem;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  /* Surfaces */
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #0a0a0a;
+  --card-foreground: #ffffff;
+  --popover: #111111;
+  --popover-foreground: #ffffff;
+
+  /* Brand — emerald on the warm near-black canvas (the shipping default) */
+  --primary: #2bcb8d;
+  --primary-foreground: #06120d;
+  --primary-soft: #2bcb8d1f;
+  --primary-line: #2bcb8d66;
+
+  --secondary: #15201a;
+  --secondary-foreground: #9fb3a8;
+  --muted: #0f1712;
+  --muted-foreground: #67786e;
+  --accent: #2bcb8d1f;
+  --accent-foreground: #2bcb8d;
+  --destructive: #ff5c5c;
+  --destructive-foreground: #ffffff;
+  --border: #1f1f1f;
+  --input: #2a2a2a;
+  --ring: var(--primary);
+
+  /* Agentic Realty surface ramp (dark — warm near-black with a green cast) */
+  --canvas: #0a0f0c;
+  --surface-1: #0f1712;
+  --surface-2: #15201a;
+  --surface-3: #1d2b23;
+  --surface-glow: #2bcb8d0f;
+  --border-subtle: #21302a;
+  --border-strong: #2e4038;
+  --text-primary: #edf2ee;
+  --text-secondary: #9fb3a8;
+  --text-muted: #67786e;
+  --text-disabled: #3c4a43;
+
+  /* Liquid-panel shadow tuned for dark — deep, dramatic */
+  --liquid-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 1px 0 0 rgba(255, 255, 255, 0.025),
+    inset 0 -60px 120px -20px rgba(0, 0, 0, 0.55),
+    0 60px 140px -40px rgba(0, 0, 0, 0.7),
+    0 0 120px -30px rgba(43, 203, 141, 0.06);
+  --liquid-glow: radial-gradient(circle, rgba(43, 203, 141, 0.1), transparent 65%);
+
+  /* Accent ramp (dark). emerald = brand/success; gold = premium highlight;
+     lime = DEMOTED "automation alive / agent working" spark only. The bright
+     WhatsApp green is scoped to .whatsapp-section further down. */
+  --accent-green: #2bcb8d;
+  --accent-green-soft: #2bcb8d1a;
+  --accent-green-line: #2bcb8d66;
+  --accent-gold: #e8c275;
+  --accent-gold-soft: #e8c2751a;
+  --accent-gold-line: #e8c27566;
+  --accent-lime: #c9f24d;
+  --accent-lime-soft: #c9f24d1a;
+  --accent-orange: #ff9f40;
+  --accent-orange-soft: #ff9f4014;
+  --accent-pink: #ff4dd9;
+  --accent-pink-soft: #ff4dd914;
+  --accent-red: #ff5c5c;
+  --accent-red-soft: #ff5c5c14;
+}
+
+@theme inline {
+  /* shadcn semantic tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-line: var(--primary-line);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Agentic Realty surface / text ramp */
+  --color-canvas: var(--canvas);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-surface-glow: var(--surface-glow);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-disabled: var(--text-disabled);
+
+  /* Agentic Realty accent ramp */
+  --color-accent-green: var(--accent-green);
+  --color-accent-green-soft: var(--accent-green-soft);
+  --color-accent-green-line: var(--accent-green-line);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-gold-soft: var(--accent-gold-soft);
+  --color-accent-gold-line: var(--accent-gold-line);
+  --color-accent-lime: var(--accent-lime);
+  --color-accent-lime-soft: var(--accent-lime-soft);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-orange-soft: var(--accent-orange-soft);
+  --color-accent-pink: var(--accent-pink);
+  --color-accent-pink-soft: var(--accent-pink-soft);
+  --color-accent-red: var(--accent-red);
+  --color-accent-red-soft: var(--accent-red-soft);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
+
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+  }
+
+  html {
+    background: var(--canvas);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--text-primary);
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: #000;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* Liquid panel — the asymmetric "molten" frame around the WhatsApp sim.
+   Shadow stack is theme-aware so light mode doesn't get the heavy dark
+   bloom designed for the dark backdrop. */
+.liquid-panel {
+  box-shadow: var(--liquid-shadow);
+}
+
+.liquid-panel-glow {
+  background: var(--liquid-glow);
+}
+
+/* WhatsApp section accent override.
+   Brand lime stays everywhere else; only inside §4 do we revert to the
+   bright WhatsApp green so the conversation reads as native WhatsApp. */
+.whatsapp-section {
+  --accent-green: #1fff6a;
+  --accent-green-soft: #1fff6a1a;
+  --accent-green-line: #1fff6a66;
+}
+
+/* Pill `--lit` mechanic for §4 status tiles. GSAP tweens --lit on the
+   element; CSS interpolates background / border / icon-color / scale /
+   glow so each tile morphs into its active state. */
+.lit-pill {
+  --lit: 0;
+  --lit-border: color-mix(in srgb, var(--border-subtle) calc((1 - var(--lit)) * 100%), var(--lit-accent) calc(var(--lit) * 100%));
+  --lit-bg: color-mix(in srgb, var(--surface-1) calc((1 - var(--lit)) * 100%), var(--lit-accent) calc(var(--lit) * 100%));
+  border-color: var(--lit-border);
+  background: var(--lit-bg);
+  transform: scale(calc(0.95 + var(--lit) * 0.05));
+  box-shadow:
+    0 0 calc(var(--lit) * 70px) calc(var(--lit) * -25px) var(--lit-accent),
+    inset 0 0 calc(var(--lit) * 60px) calc(var(--lit) * -35px) var(--lit-accent);
+  will-change: transform, background, border-color, box-shadow;
+}
+
+.lit-pill .lit-icon {
+  color: color-mix(in srgb, var(--text-muted) calc((1 - var(--lit)) * 100%), #000000 calc(var(--lit) * 100%));
+  transform: scale(calc(0.92 + var(--lit) * 0.08));
+}
+
+.lit-pill .lit-glow {
+  opacity: calc(var(--lit) * 0.9);
+}
+
+.lit-label {
+  --lit: 0;
+  opacity: calc(0.5 + var(--lit) * 0.5);
+  transform: translateY(calc((1 - var(--lit)) * 4px));
+}
+
+.lit-label .lit-label-title {
+  text-shadow: 0 0 calc(var(--lit) * 12px) var(--lit-accent);
+}
+
+/* Mastra-style stacked card carousel for §4 status pills.
+   `--lit` interpolates the centered card from idle into active state:
+   icon tile fills primary, label highlights, copy brightens, soft glow blooms. */
+.lit-card {
+  --lit: 0;
+  border-color: color-mix(in srgb, var(--border-subtle) calc((1 - var(--lit)) * 100%), var(--lit-accent) calc(var(--lit) * 100%));
+  transform: scale(calc(0.96 + var(--lit) * 0.04));
+  box-shadow:
+    0 0 calc(var(--lit) * 90px) calc(var(--lit) * -35px) var(--lit-accent),
+    inset 0 0 calc(var(--lit) * 80px) calc(var(--lit) * -55px) var(--lit-accent);
+  will-change: transform, border-color, box-shadow;
+}
+
+.lit-card .lit-icon-tile {
+  background: color-mix(in srgb, var(--surface-3) calc((1 - var(--lit)) * 100%), var(--lit-accent) calc(var(--lit) * 100%));
+  border-color: color-mix(in srgb, var(--border-subtle) calc((1 - var(--lit)) * 100%), var(--lit-accent) calc(var(--lit) * 100%));
+}
+
+.lit-card .lit-icon {
+  color: color-mix(in srgb, var(--text-secondary) calc((1 - var(--lit)) * 100%), #000000 calc(var(--lit) * 100%));
+}
+
+.lit-card .lit-glow {
+  opacity: calc(var(--lit) * 0.85);
+}
+
+.lit-card .lit-label {
+  opacity: calc(0.6 + var(--lit) * 0.4);
+}
+
+.lit-card .lit-label-title {
+  color: color-mix(in srgb, var(--text-muted) calc((1 - var(--lit)) * 100%), var(--lit-accent) calc(var(--lit) * 100%));
+  text-shadow: 0 0 calc(var(--lit) * 10px) var(--lit-accent);
+}
+
+.lit-card .lit-desc {
+  color: color-mix(in srgb, var(--text-secondary) calc((1 - var(--lit)) * 100%), var(--text-primary) calc(var(--lit) * 100%));
+}
+
+/* Scroll thread anchor lighting. The ScrollThread component sets
+   `--thread-lit` (0..1) on elements with [data-thread-anchor] as the
+   tip approaches them. CSS interpolates a soft glow + a subtle scale,
+   so the thread visibly "ignites" parts of the page as you scroll. */
+[data-thread-anchor] {
+  --thread-lit: 0;
+  transition:
+    box-shadow 320ms ease,
+    transform 320ms ease,
+    border-color 320ms ease;
+  box-shadow:
+    0 0 calc(var(--thread-lit) * 48px) calc(var(--thread-lit) * -12px)
+      rgba(43, 203, 141, 0.55);
+  transform: scale(calc(1 + var(--thread-lit) * 0.018));
+}
+
+/* Hero SVG breathing fallback for reduced-motion. */
+@keyframes sanko-breathe {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.hero-breathe {
+  animation: sanko-breathe 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-breathe {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Native details/summary chevron rotation for FAQ */
+.faq-item[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-chevron {
+  transition: transform 200ms ease-out;
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Scrollbar polish */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: #2e4038;
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #3a5249;
+}
+
+/* --- Hero orbit motion (the bespoke agent visual) --- */
+@keyframes ar-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes ar-spin-rev {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+.ar-orbit-spin {
+  animation: ar-spin 64s linear infinite;
+  transform-origin: center;
+}
+.ar-orbit-spin-rev {
+  animation: ar-spin-rev 90s linear infinite;
+  transform-origin: center;
+}
+@keyframes ar-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+.ar-pulse {
+  animation: ar-pulse 3.8s ease-in-out infinite;
+}
+@keyframes ar-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+.ar-float {
+  animation: ar-float 6s ease-in-out infinite;
+}
+.ar-float-slow {
+  animation: ar-float 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ar-orbit-spin,
+  .ar-orbit-spin-rev,
+  .ar-pulse,
+  .ar-float,
+  .ar-float-slow {
+    animation: none;
+  }
+}
+
+/* --- Global film grain: a faint luminous texture so the dark canvas
+   reads as premium material rather than flat matte. --- */
+.ar-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
