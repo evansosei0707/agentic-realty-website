@@ -300,7 +300,7 @@ time. No setup fee for pilot clients booked before July 1, 2026.
 
 ### Pilot
 
-- **Price:** `GHS 4,500 / mo`
+- **Price:** `GHS 5,000 / mo`
 - **Tagline:** `For solo brokers and small agencies testing the waters.`
 - **Features:**
   - Up to 200 leads/month

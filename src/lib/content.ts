@@ -15,7 +15,7 @@ export const content = {
   },
 
   hero: {
-    eyebrow: 'NOW ONBOARDING · 3 FOUNDING AGENCIES · ACCRA',
+    eyebrow: 'NOW ONBOARDING · 5 FOUNDING AGENCIES · ACCRA',
     headline: 'Never lose another WhatsApp lead after',
     headlineAccent: '11pm.',
     subhead:
@@ -184,7 +184,7 @@ export const content = {
     columns: ['Ama by Agentic Realty', 'Hire another agent', 'Do nothing'],
     highlightCol: 0,
     rows: [
-      { label: 'Monthly cost', values: ['From GHS 4,500, all-in', 'GHS 3,000+ salary', 'GHS 0, and lost deals'] },
+      { label: 'Monthly cost', values: ['From GHS 5,000, all-in', 'GHS 3,000+ salary', 'GHS 0, and lost deals'] },
       { label: 'Hours covered', values: ['24/7, every day', 'Roughly 9 to 5', 'Whenever someone is free'] },
       { label: 'Reply time', values: ['Under 5 seconds', 'Minutes to hours', 'Often never'] },
       { label: 'Leads dropped overnight', values: ['None', 'Most after-hours leads', 'Most after-hours leads'] },
@@ -264,11 +264,11 @@ export const content = {
     title: 'One agent, run for you.',
     titleAccent: 'Pay for outcomes, not seats.',
     subhead:
-      'Fully managed by us, or on your own servers if you prefer. No per-seat fees. No lock-in. Setup waived for the first three founding agencies booked before July 1, 2026.',
+      'Fully managed by us, or on your own servers if you prefer. No per-seat fees. No lock-in. Setup waived for the first five founding agencies booked before July 1, 2026.',
     tiers: [
       {
         name: 'Pilot Sprint',
-        price: 'GHS 1,000',
+        price: 'GHS 1,500',
         period: 'one-time',
         tagline: 'A two-week proof run on your own real leads. Fully refundable.',
         features: [
@@ -284,9 +284,9 @@ export const content = {
       },
       {
         name: 'Founding Agency',
-        price: 'GHS 4,500',
+        price: 'GHS 5,000',
         period: '/mo',
-        tagline: 'Everything, run for you. For the first three founding agencies.',
+        tagline: 'Everything, run for you. For the first five founding agencies.',
         features: [
           'Dedicated WhatsApp Business number, set up for you',
           "Ama tuned to your agency's voice",
@@ -352,7 +352,7 @@ export const content = {
       },
       {
         q: 'What does it cost, and is there a contract?',
-        a: 'Founding pricing starts at GHS 4,500 a month, all-in, with no per-seat fees. No lock-in: cancel any month with 14 days notice and keep all your data. Many agencies start with a refundable two-week pilot first.',
+        a: 'Founding pricing starts at GHS 5,000 a month, all-in, with no per-seat fees. No lock-in: cancel any month with 14 days notice and keep all your data. Many agencies start with a refundable two-week pilot first.',
       },
       {
         q: 'Does Ama understand voice notes?',
@@ -368,7 +368,7 @@ export const content = {
       'Bring two or three real WhatsApp conversations your team handled this month. We will show you exactly how Ama would have replied to each. If it does not feel like a real agent talking, we do not do business.',
     primaryCta: 'Book a 15-min demo',
     secondaryCta: 'WhatsApp us',
-    note: 'Founding capacity: 3 agencies. After that, prices reset and onboarding takes two weeks instead of one.',
+    note: 'Founding capacity: 5 agencies. After that, prices reset and onboarding takes two weeks instead of one.',
   },
 
   founder: {

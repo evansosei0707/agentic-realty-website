@@ -178,7 +178,7 @@ export function Hero() {
           <div className="absolute bottom-0 right-[2%] inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface-1/75 backdrop-blur-md px-3.5 py-2">
             <span className="w-1.5 h-1.5 rounded-full bg-accent-gold" />
             <span className="font-mono text-[11px] tracking-[0.04em] text-text-secondary">
-              East Legon · 2-bed · GHS 4,500/mo
+              East Legon · 2-bed · GHS 5,000/mo
             </span>
           </div>
         </div>

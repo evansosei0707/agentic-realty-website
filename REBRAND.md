@@ -106,7 +106,7 @@ In `src/lib/site.ts`:
 ## OPEN DECISIONS (founder)
 
 - **Pricing is provisional.** Cards show a GHS 1,000 refundable pilot, a
-  GHS 4,500/mo Founding Agency tier, and Custom. The source docs disagree on
+  GHS 5,000/mo Founding Agency tier, and Custom. The source docs disagree on
   the exact ladder, so confirm and update `content.ts > pricing`. Footnote
   already says "final pricing confirmed on your demo call."
 - **Telegram bot public name** is set to "Agentic Realty Bot" — change in
