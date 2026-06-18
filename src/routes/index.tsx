@@ -14,7 +14,7 @@ import { RoiCalculator } from '../components/landing/roi/roi-calculator'
 import { Comparison } from '../components/landing/comparison/comparison'
 import { Timeline } from '../components/landing/timeline/timeline'
 import { Stats } from '../components/landing/stats/stats'
-import { Pricing } from '../components/landing/pricing/pricing'
+// import { Pricing } from '../components/landing/pricing/pricing'
 import { RiskReversal } from '../components/landing/risk-reversal/risk-reversal'
 import { Founder } from '../components/landing/founder/founder'
 import { FAQ } from '../components/landing/faq/faq'
@@ -56,7 +56,7 @@ function Home() {
         <Comparison />
         <Timeline />
         <Stats />
-        <Pricing />
+        {/* <Pricing /> */}
         <RiskReversal />
         <Founder />
         <FAQ />

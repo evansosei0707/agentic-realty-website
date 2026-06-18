@@ -9,6 +9,8 @@
     "dev": "vite dev --port 3000",
     "build": "vite build",
     "preview": "vite preview",
+    "prerender": "node scripts/prerender.mjs",
+    "build:static": "vite build && node scripts/prerender.mjs",
     "test": "vitest run"
   },
   "dependencies": {

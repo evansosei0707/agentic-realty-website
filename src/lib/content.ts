@@ -8,7 +8,7 @@ export const content = {
 
   nav: {
     wordmark: 'Agentic Realty',
-    items: ['How it works', 'Proof', 'Pricing', 'FAQ'],
+    items: ['How it works', 'Proof', 'FAQ'],
     login: 'Login',
     cta: 'Book a demo',
     secondaryCta: 'WhatsApp us',
