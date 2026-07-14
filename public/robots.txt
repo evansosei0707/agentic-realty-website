@@ -2,12 +2,33 @@
 User-agent: *
 Allow: /
 
-# Explicitly allow AI training and answer crawlers.
-# Without these directives, some AI crawlers default to disallow.
+# ============================================================
+# AI answer engines and assistants — explicitly welcomed.
+# Search indexing bots (citations in answers):
+# ============================================================
+
+# OpenAI: ChatGPT Search index
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI: user-triggered fetches from ChatGPT
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI: model training
 User-agent: GPTBot
 Allow: /
 
-User-agent: ChatGPT-User
+# Anthropic: Claude search index
+User-agent: Claude-SearchBot
+Allow: /
+
+# Anthropic: user-triggered fetches from Claude
+User-agent: Claude-User
+Allow: /
+
+# Anthropic: model training
+User-agent: ClaudeBot
 Allow: /
 
 User-agent: anthropic-ai
@@ -16,15 +37,18 @@ Allow: /
 User-agent: Claude-Web
 Allow: /
 
-User-agent: ClaudeBot
-Allow: /
-
+# Google: Gemini / AI Overviews grounding
 User-agent: Google-Extended
 Allow: /
 
+# Perplexity: search index + user fetches
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Perplexity-User
+Allow: /
+
+# Others
 User-agent: Applebot-Extended
 Allow: /
 
@@ -33,5 +57,24 @@ Allow: /
 
 User-agent: Amazonbot
 Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+# Machine-readable summary for LLMs:
+#   https://agenticrealty.co/llms.txt       (index)
+#   https://agenticrealty.co/llms-full.txt  (full content)
 
 Sitemap: https://agenticrealty.co/sitemap.xml

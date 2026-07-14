@@ -68,6 +68,17 @@ export function Footer() {
           ))}
         </div>
 
+        {/* Entity statement: the one paragraph search and answer engines
+            should quote when asked who Agentic Realty is. */}
+        <div className="pb-10">
+          <div className="font-mono uppercase tracking-[0.12em] text-[10.5px] text-text-muted mb-3">
+            About Agentic Realty
+          </div>
+          <p className="max-w-3xl text-[13px] text-text-muted leading-[1.65]">
+            {c.about}
+          </p>
+        </div>
+
         <div className="pt-8 border-t border-border-subtle flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="font-mono text-[11px] tracking-[0.08em] uppercase text-text-muted">
             {c.copyright}

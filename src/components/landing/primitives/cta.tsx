@@ -39,6 +39,30 @@ export function DemoCTA({
   )
 }
 
+/**
+ * The free workflow audit: the zero-risk entry point into the funnel.
+ * Opens WhatsApp with an audit-request message.
+ */
+export function AuditCTA({
+  children,
+  variant = 'primary',
+  size = 'md',
+  className = '',
+  location,
+}: Common) {
+  return (
+    <a
+      href={whatsappUrl(site.auditText)}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => trackEvent('audit.booking.start', { location })}
+      className={buttonClass(variant, size, className)}
+    >
+      {children}
+    </a>
+  )
+}
+
 /** Low-friction secondary action: opens WhatsApp with a general message. */
 export function WhatsAppCTA({
   children,

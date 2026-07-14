@@ -13,6 +13,10 @@ export const site = {
   demoText:
     "Hi Agentic Realty, I'd like to book a 15-minute demo of Ama for my agency.",
 
+  // Prefilled message for the "Book the free workflow audit" CTA.
+  auditText:
+    "Hi Agentic Realty, I'd like to book the free workflow audit for my agency.",
+
   email: 'hello@agenticrealty.co',
 
   // No separate booking page yet — the demo is booked via the WhatsApp chat.

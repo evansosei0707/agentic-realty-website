@@ -1,6 +1,6 @@
 import { content } from '../../../lib/content'
 import { useReveal } from '../../../lib/use-reveal'
-import { DemoCTA, WhatsAppCTA } from '../primitives/cta'
+import { AuditCTA, WhatsAppCTA } from '../primitives/cta'
 
 export function FinalCTA() {
   const ref = useReveal<HTMLElement>()
@@ -22,6 +22,13 @@ export function FinalCTA() {
           }}
         />
         <div className="relative max-w-3xl mx-auto">
+          <div
+            data-reveal
+            className="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full border border-accent-gold/30 bg-accent-gold-soft font-mono text-[10.5px] tracking-[0.16em] uppercase text-accent-gold"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-gold" />
+            {c.eyebrow}
+          </div>
           <h2
             data-reveal
             className="font-display text-[30px] sm:text-[44px] md:text-[60px] leading-[1.05] tracking-[-0.02em] font-semibold"
@@ -39,12 +46,12 @@ export function FinalCTA() {
             data-reveal
             className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
           >
-            <DemoCTA variant="primary" size="lg" location="final-cta">
+            <AuditCTA variant="primary" size="lg" location="final-cta">
               {c.primaryCta}
               <span aria-hidden className="ml-2 -mr-0.5">
                 →
               </span>
-            </DemoCTA>
+            </AuditCTA>
             <WhatsAppCTA variant="ghost" size="lg" location="final-cta">
               {c.secondaryCta}
             </WhatsAppCTA>

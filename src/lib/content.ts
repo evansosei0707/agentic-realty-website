@@ -1,41 +1,78 @@
+// All page copy lives here. Components stay dumb; edit words in one place.
+//
+// MEDIA SLOTS ------------------------------------------------------------
+// Each service below has a `media` entry. Drop your file into
+// public/media/services/ and set `src` to its path, e.g.
+//   media: { kind: 'video', src: '/media/services/whatsapp-sales-agent.mp4', ... }
+// Until `src` is set, the site renders a designed placeholder frame,
+// so the page looks finished either way.
+// -------------------------------------------------------------------------
+
+export type ServiceMedia = {
+  kind: 'image' | 'video'
+  /** Path under /public. Leave '' to show the placeholder frame. */
+  src: string
+  /** Poster image for videos (optional). */
+  poster?: string
+  alt: string
+  /** Small caption printed under the frame. */
+  label: string
+}
+
+export type Service = {
+  id: string
+  num: string
+  name: string
+  /** Short qualifier shown in the index list. */
+  tag: string
+  /** Optional badge, e.g. FLAGSHIP or FREE. */
+  badge?: string
+  /** Editorial headline inside the detail panel. */
+  title: string
+  body: string
+  deliverables: readonly string[]
+  media: ServiceMedia
+}
+
 export const content = {
   brand: {
     name: 'Agentic Realty',
     agent: 'Ama',
     bot: 'Agentic Realty Bot',
-    tagline: 'The AI sales agent for real estate, built in Accra.',
+    tagline: 'The AI automation studio for real estate, built in Accra.',
   },
 
   nav: {
     wordmark: 'Agentic Realty',
-    items: ['How it works', 'Proof', 'FAQ'],
+    items: ['Services', 'How it works', 'Proof', 'FAQ'],
     login: 'Login',
     cta: 'Book a demo',
     secondaryCta: 'WhatsApp us',
   },
 
   hero: {
-    eyebrow: 'NOW ONBOARDING · 5 FOUNDING AGENCIES · ACCRA',
-    headline: 'Never lose another WhatsApp lead after',
-    headlineAccent: '11pm.',
+    eyebrow: 'AI AUTOMATION STUDIO · NOW ONBOARDING · ACCRA',
+    headline: 'Sell homes. We run',
+    headlineAccent: 'everything else.',
     subhead:
-      'Agentic Realty runs Ama, an AI sales agent that answers every WhatsApp lead in seconds, qualifies them, books the viewing, and follows up. 24/7, in a warm Ghanaian voice that sounds like your sharpest agent, never a robot. You stay in control. We run all of it for you.',
+      'Agentic Realty builds and runs the machinery behind a modern agency. An AI sales agent answering WhatsApp at 2am. Walkthroughs that sell the house before the viewing. Contracts that sign and file themselves. Your team does the human part. The systems never stop doing the rest.',
     primaryCta: 'Book a 15-min demo',
-    secondaryCta: 'See Ama close a live lead',
-    microCta: 'Live in 5 working days. We set it all up. Cancel anytime.',
+    secondaryCta: 'See the nine systems',
+    secondaryHref: '#services',
+    microCta: 'Or start with the free workflow audit. We map the leaks, you keep the plan.',
     metrics: [
       { value: '< 5s', label: 'reply, any hour' },
-      { value: '24/7', label: 'never off, never tired' },
-      { value: '5 days', label: 'from yes to live' },
+      { value: '24/7', label: 'no sick days' },
+      { value: '9', label: 'systems, one CRM' },
     ],
   },
 
   logos: {
-    caption: 'Built in Accra, for Accra agencies',
+    caption: 'Built in Accra, for agencies that want to move faster',
     points: [
       'Live in production',
       'Runs on your WhatsApp Business number',
-      'Validated against MTN, Telecel, AirtelTigo and Glo numbers',
+      'Nine systems reporting into one CRM',
       'Speaks GHS, knows East Legon to Tema',
       'Your data stays yours',
     ],
@@ -43,33 +80,227 @@ export const content = {
 
   problem: {
     eyebrow: 'THE REAL COST',
-    title: "You're not losing leads because your agents are bad.",
-    titleAccent: "You're losing them because nobody's awake.",
+    title: "You're not short on demand.",
+    titleAccent: "You're short on hours.",
     subhead:
-      'Every weekend, every holiday, every time your best agent has a cold, an inquiry you already paid to generate goes quiet and books a viewing somewhere else. It is not one problem. It is three.',
+      'An agency leaks money in three places: leads nobody answers, listings nobody sees, and paperwork that eats the week. You already paid for the demand. The leak is everything that happens after.',
     cards: [
       {
         tag: 'COVERAGE',
         title: 'The 11pm gap',
-        body: 'Your best lead messages at 11pm. You reply at 8am. By 10am they have booked a viewing with another agent. One slow reply, one lost GHS 5,000 to 15,000 commission.',
+        body: 'Your best lead messages at 11pm. You reply at 8am. By 10am they have booked a viewing with another agent. One slow reply, one lost commission worth GHS 5,000 to 15,000.',
       },
       {
-        tag: 'MEMORY',
-        title: 'Follow-up that lives in your head',
-        body: 'Half your active leads never get a second touch. Not because anyone is lazy, but because the follow-up sequence lives in someone’s memory instead of a system that never forgets.',
+        tag: 'VISIBILITY',
+        title: 'Listings nobody scrolls back for',
+        body: 'A great house sits online for months with four dark photos. No walkthrough, no video, no posting rhythm. Buyers do not call about homes they scrolled past in half a second.',
       },
       {
-        tag: 'CONSISTENCY',
-        title: 'Two agents, two prices',
-        body: 'One agent quotes 5,000. Another quotes 4,500 on the same unit. The client notices, trust drops, and the deal gets harder. Your pitch should be the same every single time.',
+        tag: 'OPERATIONS',
+        title: 'The week the paperwork ate',
+        body: 'Offers typed from scratch. Leases chased for signatures. Rent reminders sent by hand, when someone remembers. Every one of those hours comes straight out of selling time.',
       },
     ],
     kicker:
-      'Hiring another agent costs GHS 3,000 a month, takes four weeks to train, leaves in six months, and still does not reply at 11pm. This is a coverage problem, not a headcount problem.',
+      'Hiring one more person fixes none of this. People sleep, forget, and resign. So we built systems that do not, and we run them for you.',
+  },
+
+  services: {
+    eyebrow: 'WHAT WE BUILD AND RUN',
+    title: 'Nine systems.',
+    titleAccent: 'One quiet machine.',
+    subhead:
+      'Start with the system that hurts most and add the rest when you are ready. We build each one, run it, watch it around the clock, and tune it on your real conversations. Everything reports into one CRM your team already knows how to drive.',
+    footnote:
+      'Not sure where to start? The workflow audit at the end of this list is free, and it tells you.',
+    detailCta: 'Talk to us about this system',
+    items: [
+      {
+        id: 'whatsapp-sales-agent',
+        num: '01',
+        name: 'WhatsApp Sales Agent',
+        tag: 'Sales, around the clock',
+        badge: 'FLAGSHIP',
+        title: 'The agent who never sleeps on a lead.',
+        body: 'Ama answers every WhatsApp inquiry in seconds, in a warm Ghanaian voice. She qualifies budget, area, and bedrooms, recommends the right homes, books the viewing, and follows up on Day 3, 7, 14, and 30. Your team wakes up to briefed leads, not cold names.',
+        deliverables: [
+          'Replies in under 5 seconds, any hour, in English, Twi, or pidgin',
+          "Books viewings straight from your agents' availability",
+          'Escalates VIPs and tricky questions to a human instantly',
+        ],
+        media: {
+          kind: 'video',
+          src: '',
+          alt: 'Ama working a live WhatsApp lead',
+          label: 'Ama working a live lead, in real time',
+        },
+      },
+      {
+        id: 'property-recommendations',
+        num: '02',
+        name: 'AI Property Recommendations',
+        tag: 'Matching that respects the budget',
+        title: 'The right home finds the right buyer.',
+        body: 'Every lead is matched against your live inventory, in budget and in area, never a cedi over. Add a listing today and every waiting buyer it fits hears about it within minutes, with a message written for them, not a blast.',
+        deliverables: [
+          'New-listing alerts to every matched lead, exactly once',
+          'Learns preferences from the conversation, not a form',
+          'Never offers over budget or outside the area',
+        ],
+        media: {
+          kind: 'image',
+          src: '',
+          alt: 'A matched listing alert arriving on WhatsApp',
+          label: 'A new listing meeting its waiting buyers',
+        },
+      },
+      {
+        id: '3d-walkthroughs',
+        num: '03',
+        name: '3D Property Walkthroughs',
+        tag: 'Immersive tours, shared by link',
+        title: 'Buyers shortlist from their sofa.',
+        body: 'A full 3D walkthrough of each listing, shared as a simple link on WhatsApp. Serious buyers arrive already sold on the layout, and the tyre-kickers filter themselves out before anyone drives across Accra.',
+        deliverables: [
+          'Full 3D capture, delivered as a WhatsApp-ready link',
+          'Works on any phone, no app to install',
+          'Fewer wasted viewings, faster decisions',
+        ],
+        media: {
+          kind: 'video',
+          src: '',
+          alt: 'A 3D walkthrough of an East Legon home',
+          label: 'Walking a listing without leaving the chat',
+        },
+      },
+      {
+        id: 'lead-harvesting',
+        num: '04',
+        name: 'Lead Harvesting',
+        tag: 'Every channel, one pipeline',
+        title: 'No inquiry left sitting in a tab.',
+        body: 'Meta ads, marketplace listings, portals, your website, a DM on Instagram. Wherever a lead lands, it is captured, deduplicated, and dropped into one pipeline with the first touch already sent.',
+        deliverables: [
+          'Every source funnels into one CRM record',
+          'First reply goes out in seconds, not days',
+          'Duplicates merged, sources tracked',
+        ],
+        media: {
+          kind: 'image',
+          src: '',
+          alt: 'Leads from many channels landing in one pipeline',
+          label: 'Five channels, one pipeline',
+        },
+      },
+      {
+        id: 'social-autopilot',
+        num: '05',
+        name: 'Social Media Autopilot',
+        tag: 'Always visible, never manual',
+        title: 'Your listings post themselves.',
+        body: 'Each new listing becomes a run of posts and reels, on schedule, across your pages. The agency stays visible every single day without anyone giving up their Sunday night to do it.',
+        deliverables: [
+          'Listing-to-post pipeline, photos to captions',
+          'A steady cadence across your platforms',
+          'One monthly report instead of five dashboards',
+        ],
+        media: {
+          kind: 'video',
+          src: '',
+          alt: 'A listing becoming a social media reel',
+          label: 'One listing, a week of content',
+        },
+      },
+      {
+        id: 'review-harvesting',
+        num: '06',
+        name: 'Customer Review Harvesting',
+        tag: 'Reputation that compounds',
+        title: 'Five stars, asked for at the right moment.',
+        body: 'The ask goes out when the client is happiest, right after the keys change hands. Glowing clients get walked to Google. Unhappy ones get walked to you first, quietly, before anything goes public.',
+        deliverables: [
+          'Automatic review requests after closed deals',
+          'Happy clients routed straight to Google Reviews',
+          'Complaints intercepted privately first',
+        ],
+        media: {
+          kind: 'image',
+          src: '',
+          alt: 'A five-star Google review arriving after a closed deal',
+          label: 'The ask, timed to the handover',
+        },
+      },
+      {
+        id: 'document-automation',
+        num: '07',
+        name: 'Document & Contract Automation',
+        tag: 'Zero retyping, e-signed',
+        title: 'Offers out in minutes, not days.',
+        body: 'Offers, leases, and mandates drafted straight from CRM data, sent for e-signature, chased automatically, and filed against the deal. Nobody retypes a client name into a Word template again.',
+        deliverables: [
+          'Templates filled from the CRM, no retyping',
+          'E-signature on any phone',
+          'Signed copies filed to the deal automatically',
+        ],
+        media: {
+          kind: 'image',
+          src: '',
+          alt: 'A lease being e-signed on a phone',
+          label: 'A lease signed on a phone, filed on its own',
+        },
+      },
+      {
+        id: 'property-management',
+        num: '08',
+        name: 'Property Management Automation',
+        tag: 'The long tail, handled',
+        title: 'Rent day runs itself.',
+        body: 'Rent reminders, renewal notices, and maintenance requests handled on WhatsApp, on schedule. Owners get their statements without asking. Your property managers stop being human alarm clocks.',
+        deliverables: [
+          'Rent and renewal reminders that never slip',
+          'Maintenance intake on WhatsApp, routed to the right person',
+          'Owner statements delivered on schedule',
+        ],
+        media: {
+          kind: 'image',
+          src: '',
+          alt: 'Rent reminders and maintenance requests handled on WhatsApp',
+          label: 'The first of the month, fully automated',
+        },
+      },
+      {
+        id: 'workflow-audit',
+        num: '09',
+        name: 'Business Workflow Audit',
+        tag: 'Free, and yours to keep',
+        badge: 'FREE · START HERE',
+        title: 'We find the leaks. You keep the map.',
+        body: 'We sit with your team and walk through how a lead, a listing, and a lease actually move through your agency. You get a written map of the bottlenecks and a prioritised automation plan. Work with us on it, or take the plan and run. It is yours either way.',
+        deliverables: [
+          'A working session with your team, on your real process',
+          'A written bottleneck report you keep',
+          'A prioritised automation plan, no strings attached',
+        ],
+        media: {
+          kind: 'image',
+          src: '',
+          alt: 'A workflow audit session with an agency team',
+          label: 'The map your agency runs on',
+        },
+      },
+    ],
+  } as {
+    eyebrow: string
+    title: string
+    titleAccent: string
+    subhead: string
+    footnote: string
+    detailCta: string
+    items: readonly Service[]
   },
 
   whatsappSim: {
-    eyebrow: 'SEE IT WORK',
+    eyebrow: 'THE FLAGSHIP, WORKING',
     title: 'Watch Ama close a lead that came in at',
     titleAccent: '11:47pm.',
     subhead:
@@ -115,7 +346,7 @@ export const content = {
 
   featureEscalation: {
     label: 'AGENT COCKPIT',
-    title: "A human steps in the moment it matters.",
+    title: 'A human steps in the moment it matters.',
     body: 'Angry lead, tricky question, suspected VIP. Every escalation shows up in your inbox before WhatsApp even pings your phone. And if your team goes quiet on one, the system keeps nudging until someone picks it up. No lead falls through the cracks overnight.',
     subcaption: '3 escalations today · last 2 minutes ago',
   },
@@ -157,9 +388,9 @@ export const content = {
   },
 
   band: {
-    quote: 'Every listing deserves an agent that never sleeps.',
-    sub: 'Ama works every inquiry the moment it lands, on the right home, in budget, in the area. So the deal closes with you, not the agency down the road.',
-    cta: 'See Ama in action',
+    quote: 'Every listing deserves a team that never sleeps.',
+    sub: 'Ama works every inquiry the moment it lands, on the right home, in budget, in the area. The walkthroughs, posts, and paperwork run themselves behind her. So the deal closes with you, not the agency down the road.',
+    cta: 'See it in action',
     img: '/img/band-home.jpg',
   },
 
@@ -173,8 +404,7 @@ export const content = {
       afterHours: { label: 'Share that arrive after hours', min: 10, max: 80, step: 5, default: 45, suffix: '%' },
       commission: { label: 'Average commission (GHS)', min: 1500, max: 30000, step: 500, default: 6000 },
     },
-    note: 'Assumes a conservative share of after-hours leads are lost to a slow reply, and that Ama recovers most of them. Your real numbers are confirmed on your demo.',
-    feeForBreakeven: 4500,
+    note: 'Assumes a conservative share of after-hours leads are lost to a slow reply, and that an instant first response recovers most of them. Your real numbers are confirmed on your demo.',
   },
 
   comparison: {
@@ -184,7 +414,7 @@ export const content = {
     columns: ['Ama by Agentic Realty', 'Hire another agent', 'Do nothing'],
     highlightCol: 0,
     rows: [
-      { label: 'Monthly cost', values: ['From GHS 5,000, all-in', 'GHS 3,000+ salary', 'GHS 0, and lost deals'] },
+      { label: 'What it costs', values: ['Less than one junior hire', 'GHS 3,000+ salary', 'GHS 0, and lost deals'] },
       { label: 'Hours covered', values: ['24/7, every day', 'Roughly 9 to 5', 'Whenever someone is free'] },
       { label: 'Reply time', values: ['Under 5 seconds', 'Minutes to hours', 'Often never'] },
       { label: 'Leads dropped overnight', values: ['None', 'Most after-hours leads', 'Most after-hours leads'] },
@@ -210,7 +440,8 @@ export const content = {
   timeline: {
     eyebrow: 'TIME TO VALUE',
     title: "From 'yes' to your first live lead in 5 working days.",
-    subhead: 'We do the work. Your total time involved is about four hours.',
+    subhead:
+      'That is the flagship WhatsApp agent. We do the work; your total time involved is about four hours. The other systems are scoped in your audit and added at your pace.',
     days: [
       { day: 'Day 1', title: 'Kickoff', body: 'We agree your agency name, agent persona, and speciality areas, and connect your WhatsApp number. About one hour of your time.' },
       { day: 'Day 2 to 3', title: 'We build', body: 'We provision your dedicated WhatsApp number, load your listings into the CRM, and tune Ama to your voice. Zero hours of your time.' },
@@ -259,69 +490,6 @@ export const content = {
     footnote: 'Numbers from the live production system, 2026.',
   },
 
-  pricing: {
-    eyebrow: 'PRICING',
-    title: 'One agent, run for you.',
-    titleAccent: 'Pay for outcomes, not seats.',
-    subhead:
-      'Fully managed by us, or on your own servers if you prefer. No per-seat fees. No lock-in. Setup waived for the first five founding agencies booked before July 1, 2026.',
-    tiers: [
-      {
-        name: 'Pilot Sprint',
-        price: 'GHS 1,500',
-        period: 'one-time',
-        tagline: 'A two-week proof run on your own real leads. Fully refundable.',
-        features: [
-          'We connect a WhatsApp number',
-          'Ama trained on your real listings',
-          'Up to two weeks on your actual leads',
-          'Refunded in full if you walk',
-          'No commitment after',
-        ],
-        cta: 'Start a pilot',
-        recommended: false,
-        arcMeta: '2-WEEK PROOF',
-      },
-      {
-        name: 'Founding Agency',
-        price: 'GHS 5,000',
-        period: '/mo',
-        tagline: 'Everything, run for you. For the first five founding agencies.',
-        features: [
-          'Dedicated WhatsApp Business number, set up for you',
-          "Ama tuned to your agency's voice",
-          'Twenty CRM for your whole team, unlimited seats',
-          'Qualifying, viewings, follow-ups, review requests',
-          'Telegram CRM bot for agents in the field',
-          'Monthly tuning on your real conversations',
-          '24/7 monitoring and priority support',
-        ],
-        cta: 'Book a 15-min demo',
-        recommended: true,
-        arcMeta: 'DONE FOR YOU',
-      },
-      {
-        name: 'Multi-office',
-        price: 'Custom',
-        period: '',
-        tagline: 'Multiple offices, 500+ leads a month, or custom integrations.',
-        features: [
-          'Everything in Founding Agency',
-          'Multiple agent personas',
-          'Mobile money and card payments (roadmap)',
-          'E-signature for offers and leases (roadmap)',
-          'Dedicated SLA and a direct line',
-          'White-label option',
-        ],
-        cta: 'Talk to us',
-        recommended: false,
-        arcMeta: 'MULTI-OFFICE',
-      },
-    ],
-    footnote:
-      'All prices in GHS, all-in, no per-seat fees. Setup waived for founding agencies. Prefer your own servers? We do that too. Final pricing is confirmed on your demo call.',
-  },
-
   faq: {
     eyebrow: 'QUESTIONS',
     title: 'Things agency owners usually ask first.',
@@ -329,6 +497,10 @@ export const content = {
       {
         q: 'Does Ama replace my agents?',
         a: 'No. She handles the first 80% so they close the last 20%. Your agents stop chasing first-touch messages at 11pm and start closing actual deals. Ama escalates anything she cannot handle.',
+      },
+      {
+        q: 'Do we have to take all nine systems?',
+        a: 'No. Most agencies start with the WhatsApp sales agent or the free workflow audit and add systems as they pay for themselves. Each one stands on its own, and they compound as you add them, because everything reports into the same CRM.',
       },
       {
         q: 'Will my clients know they are chatting with AI?',
@@ -348,11 +520,11 @@ export const content = {
       },
       {
         q: 'How fast can we go live?',
-        a: 'Five working days from yes to your first live lead. We connect your WhatsApp number, load your inventory, train Ama on your voice, and go. Your total time involved is about four hours.',
+        a: 'Five working days from yes to your first live lead on the flagship WhatsApp agent. Your total time involved is about four hours. The other systems are scoped in your audit and rolled out at your pace.',
       },
       {
         q: 'What does it cost, and is there a contract?',
-        a: 'Founding pricing starts at GHS 5,000 a month, all-in, with no per-seat fees. No lock-in: cancel any month with 14 days notice and keep all your data. Many agencies start with a refundable two-week pilot first.',
+        a: 'It depends on which systems you switch on, so we scope it on your demo call rather than publish a one-size-fits-nobody number. What is fixed: no per-seat fees, no lock-in, cancel any month with 14 days notice and keep all your data. The workflow audit is free either way.',
       },
       {
         q: 'Does Ama understand voice notes?',
@@ -362,13 +534,14 @@ export const content = {
   },
 
   finalCta: {
-    title: 'Stop losing leads after 11pm.',
-    titleAccent: 'See Ama close a live one.',
+    eyebrow: 'THE FIRST STEP IS FREE',
+    title: 'Start with the audit.',
+    titleAccent: 'Keep the map either way.',
     subhead:
-      'Bring two or three real WhatsApp conversations your team handled this month. We will show you exactly how Ama would have replied to each. If it does not feel like a real agent talking, we do not do business.',
-    primaryCta: 'Book a 15-min demo',
+      'A working session with your team. We trace how a lead, a listing, and a lease actually move through your agency, then hand you a written plan of what to automate first. If we never speak again, you still leave with the map.',
+    primaryCta: 'Book the free workflow audit',
     secondaryCta: 'WhatsApp us',
-    note: 'Founding capacity: 5 agencies. After that, prices reset and onboarding takes two weeks instead of one.',
+    note: 'Prefer to see it working first? Ask for the 15-minute demo and watch Ama close a live lead.',
   },
 
   founder: {
@@ -380,14 +553,16 @@ export const content = {
 
   footer: {
     wordmark: 'Agentic Realty',
-    tagline: 'The AI sales agent for real estate, built in Accra.',
+    tagline: 'The AI automation studio for real estate, built in Accra.',
+    about:
+      'Agentic Realty is Ghana’s first PropTech company running AI agents for real estate, and as of 2026 the only one. We design, build, and operate nine automation systems for agencies in Accra and across Greater Accra: East Legon, Cantonments, Airport Residential, Labone, Dzorwulu, Tema, and Adenta. Everything we run is measured in production and reports into one CRM.',
     columns: [
       {
         heading: 'Product',
         items: [
+          { label: 'The nine systems', href: '#services' },
           { label: 'How it works', href: '#how-it-works' },
           { label: 'Proof', href: '#proof' },
-          { label: 'Pricing', href: '#pricing' },
           { label: 'FAQ', href: '#faq' },
         ],
       },
@@ -395,7 +570,7 @@ export const content = {
         heading: 'Company',
         items: [
           { label: 'Why us', href: '#why-us' },
-          { label: 'Book a demo', href: '#demo' },
+          { label: 'Free workflow audit', href: '#demo' },
           { label: 'WhatsApp us', href: '#demo' },
           { label: 'Made in Accra', href: '#why-us' },
         ],

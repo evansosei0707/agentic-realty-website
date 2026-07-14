@@ -130,7 +130,7 @@ export function Stats() {
             data-thread-anchor
             className="relative w-full max-w-[560px] mx-auto"
           >
-            <ArcVisual tiers={content.pricing.tiers} />
+            <ArcVisual />
           </div>
         </div>
 
@@ -166,15 +166,20 @@ function ArcStar({ x, y, color }: { x: number; y: number; color: string }) {
   )
 }
 
-type ArcTier = { name: string; arcMeta: string }
+// The three rings of the machine, rolling out from Day 0 to Day 90.
+const ARC_RINGS = [
+  { name: 'SALES', meta: 'ALWAYS ANSWERED' },
+  { name: 'MARKETING', meta: 'ALWAYS VISIBLE' },
+  { name: 'OPERATIONS', meta: 'ALWAYS DONE' },
+] as const
 
-function ArcVisual({ tiers }: { tiers: ReadonlyArray<ArcTier> }) {
+function ArcVisual() {
   const arcStrokes = ['#e8c275', '#e8c275', '#2bcb8d']
   const radii = [110, 160, 210]
-  const arcs = tiers.map((t, i) => ({
+  const arcs = ARC_RINGS.map((t, i) => ({
     r: radii[i] ?? 210,
     stroke: arcStrokes[i] ?? '#2bcb8d',
-    label: `${t.name.toUpperCase()} · ${t.arcMeta}`,
+    label: `${t.name} · ${t.meta}`,
   }))
 
   const SPOKE_LEN = 250

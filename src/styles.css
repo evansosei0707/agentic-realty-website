@@ -233,6 +233,14 @@
     text-rendering: optimizeLegibility;
   }
 
+  /* Anchor navigation glides instead of jumping. Also keeps scroll-driven
+     reveals firing along the way. Disabled for reduced-motion users. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
     margin: 0;
     background: var(--canvas);

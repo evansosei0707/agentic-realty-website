@@ -1,8 +1,8 @@
 import { useRef, type ReactNode } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ensureGsap } from '../../../lib/gsap-init'
+import { observeOnce } from '../../../lib/use-reveal'
 import { content } from '../../../lib/content'
 import { LabelPill } from '../primitives/pill'
 import { EscalationInbox } from '../simulated-ui/escalation-inbox'
@@ -85,28 +85,34 @@ export function FeatureStack() {
       gsap.set(cardEls, { autoAlpha: 0, y: 28 })
       gsap.set(titleWordEls, { autoAlpha: 0, y: 14 })
 
-      ScrollTrigger.batch(cardEls, {
-        start: 'top 82%',
-        onEnter: (batch) => {
-          gsap.to(batch, {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.12,
-            ease: 'power2.out',
-          })
-          batch.forEach((el) => {
-            const words = el.querySelectorAll<HTMLElement>('.fs-title-word')
-            gsap.to(words, {
+      // IO-based reveal (not ScrollTrigger): stays correct through instant
+      // anchor jumps, where scroll bookkeeping can leave cards invisible.
+      observeOnce(
+        cardEls,
+        (el) => {
+          const words = el.querySelectorAll<HTMLElement>('.fs-title-word')
+          gsap
+            .timeline()
+            .to(el, {
               autoAlpha: 1,
               y: 0,
-              duration: 0.5,
-              stagger: 0.04,
+              duration: 0.6,
               ease: 'power2.out',
             })
-          })
+            .to(
+              words,
+              {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.5,
+                stagger: 0.04,
+                ease: 'power2.out',
+              },
+              '<0.1',
+            )
         },
-      })
+        '0px 0px -18% 0px',
+      )
     },
     { scope: ref as unknown as React.RefObject<HTMLElement> },
   )

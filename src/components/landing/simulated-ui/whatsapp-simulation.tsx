@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ensureGsap } from '../../../lib/gsap-init'
+import { observeOnce } from '../../../lib/use-reveal'
 import { content } from '../../../lib/content'
 import { ConversationThread } from './conversation-thread'
 import { StatusPills } from './status-pills'
@@ -48,16 +49,16 @@ export function WhatsAppSimulation() {
 
       gsap.set(msgs, { autoAlpha: 0, y: 16 })
 
-      ScrollTrigger.batch(msgs, {
-        start: 'top 88%',
-        onEnter: (els) =>
-          gsap.to(els, {
-            autoAlpha: 1,
-            y: 0,
-            stagger: 0.1,
-            duration: 0.55,
-            ease: 'power2.out',
-          }),
+      // IO-based reveal (not ScrollTrigger): stays correct through instant
+      // anchor jumps, where scroll bookkeeping can leave messages invisible.
+      observeOnce(Array.from(msgs), (el, i) => {
+        gsap.to(el, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.55,
+          delay: (i % 4) * 0.1,
+          ease: 'power2.out',
+        })
       })
 
       ScrollTrigger.create({

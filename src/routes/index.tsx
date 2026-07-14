@@ -3,6 +3,7 @@ import { Nav } from '../components/landing/nav/nav'
 import { Hero } from '../components/landing/hero/hero'
 import { LogoStrip } from '../components/landing/logos/logo-strip'
 import { Problem } from '../components/landing/problem/problem'
+import { Services } from '../components/landing/services/services'
 import { WhatsAppSimulation } from '../components/landing/simulated-ui/whatsapp-simulation'
 import { HowItWorks } from '../components/landing/workflow-diagram/how-it-works'
 import { Neighborhoods } from '../components/landing/neighborhoods/neighborhoods'
@@ -14,7 +15,6 @@ import { RoiCalculator } from '../components/landing/roi/roi-calculator'
 import { Comparison } from '../components/landing/comparison/comparison'
 import { Timeline } from '../components/landing/timeline/timeline'
 import { Stats } from '../components/landing/stats/stats'
-// import { Pricing } from '../components/landing/pricing/pricing'
 import { RiskReversal } from '../components/landing/risk-reversal/risk-reversal'
 import { Founder } from '../components/landing/founder/founder'
 import { FAQ } from '../components/landing/faq/faq'
@@ -45,6 +45,7 @@ function Home() {
         </div>
         <LogoStrip />
         <Problem />
+        <Services />
         <WhatsAppSimulation />
         <HowItWorks />
         <Neighborhoods />
@@ -56,7 +57,6 @@ function Home() {
         <Comparison />
         <Timeline />
         <Stats />
-        {/* <Pricing /> */}
         <RiskReversal />
         <Founder />
         <FAQ />

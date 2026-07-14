@@ -126,7 +126,7 @@ export function Hero() {
               </span>
             </DemoCTA>
             <a
-              href="#see-it-work"
+              href={c.secondaryHref}
               className="group inline-flex items-center gap-2 text-text-secondary hover:text-text-primary text-[15px] font-medium transition-colors"
             >
               {c.secondaryCta}
@@ -153,27 +153,35 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Ama's live activity, annotating the home (desktop) */}
+        {/* The whole machine at work, annotating the home (desktop) */}
         <div
           data-thread-anchor
           className="hero-anim relative hidden lg:block h-[440px]"
         >
           <AmaPill className="absolute top-1 right-2 ar-float-slow" />
           <Chip
-            className="absolute top-[26%] right-[4%] ar-float"
+            className="absolute top-[24%] right-[4%] ar-float"
             dot="bg-accent-gold"
             title="Viewing booked"
             sub="Sat 11:00 · East Legon"
           />
           <Chip
-            className="absolute top-[54%] right-[40%] ar-float-slow"
-            dot="bg-primary"
-            title="Lead qualified"
-          />
-          <Chip
-            className="absolute bottom-[8%] right-[14%] ar-float"
+            className="absolute top-[42%] right-[44%] ar-float-slow"
             dot="bg-primary"
             title="Replied in 4s"
+            sub="Lead qualified · in budget"
+          />
+          <Chip
+            className="absolute top-[62%] right-[10%] ar-float-slow"
+            dot="bg-primary"
+            title="Lease signed"
+            sub="e-signature · filed to the deal"
+          />
+          <Chip
+            className="absolute bottom-[9%] right-[38%] ar-float"
+            dot="bg-accent-gold"
+            title="5-star review posted"
+            sub="Google · after handover"
           />
           <div className="absolute bottom-0 right-[2%] inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface-1/75 backdrop-blur-md px-3.5 py-2">
             <span className="w-1.5 h-1.5 rounded-full bg-accent-gold" />
@@ -252,5 +260,5 @@ function Metric({ value, label }: { value: string; label: string }) {
 }
 
 function Divider() {
-  return <span className="w-px h-4 bg-border-strong" aria-hidden />
+  return <span className="hidden sm:block w-px h-4 bg-border-strong" aria-hidden />
 }

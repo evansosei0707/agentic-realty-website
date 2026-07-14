@@ -25,16 +25,12 @@ export function RoiCalculator() {
     const recoveredPerMonth = Math.round(afterHoursLeads * RECOVERED_SHARE)
     const extraDealsPerYear = Math.round(recoveredPerMonth * 12 * LEAD_TO_DEAL)
     const recoveredValuePerYear = extraDealsPerYear * commission
-    const annualFee = c.feeForBreakeven * 12
-    const roi = annualFee > 0 ? recoveredValuePerYear / annualFee : 0
     return {
       afterHoursLeads,
       recoveredPerMonth,
       recoveredValuePerYear,
-      annualFee,
-      roi,
     }
-  }, [leads, afterHours, commission, c.feeForBreakeven])
+  }, [leads, afterHours, commission])
 
   return (
     <section
@@ -134,23 +130,10 @@ export function RoiCalculator() {
 
             <div className="mt-7 pt-6 border-t border-border-subtle">
               <p className="text-[14px] md:text-[15px] text-text-secondary leading-[1.55]">
-                Ama costs{' '}
+                That is money already walking through your door and out again.{' '}
                 <span className="text-text-primary font-medium">
-                  {ghs(r.annualFee)}/year
+                  The system pays for itself the month it saves you one deal.
                 </span>
-                .{' '}
-                {r.roi >= 1 ? (
-                  <>
-                    That is about{' '}
-                    <span className="text-primary font-semibold">
-                      {r.roi.toFixed(1)}x
-                    </span>{' '}
-                    back, illustratively. It pays for itself the month it saves
-                    you one deal.
-                  </>
-                ) : (
-                  <>It pays for itself the month it saves you one deal.</>
-                )}
               </p>
               <div className="mt-6">
                 <DemoCTA
