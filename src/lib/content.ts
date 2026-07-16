@@ -14,6 +14,8 @@ export type ServiceMedia = {
   src: string
   /** Poster image for videos (optional). */
   poster?: string
+  /** Portrait phone recordings render inside a phone bezel. */
+  orientation?: 'portrait' | 'landscape'
   alt: string
   /** Small caption printed under the frame. */
   label: string
@@ -44,7 +46,7 @@ export const content = {
 
   nav: {
     wordmark: 'Agentic Realty',
-    items: ['Services', 'How it works', 'Proof', 'FAQ'],
+    items: ['Services', '3D Tours', 'How it works', 'Proof', 'FAQ'],
     login: 'Login',
     cta: 'Book a demo',
     secondaryCta: 'WhatsApp us',
@@ -130,9 +132,11 @@ export const content = {
         ],
         media: {
           kind: 'video',
-          src: '',
-          alt: 'Ama working a live WhatsApp lead',
-          label: 'Ama working a live lead, in real time',
+          src: '/media/whatsapp-agent-demo.mp4',
+          poster: '/media/whatsapp-agent-demo.jpg',
+          orientation: 'portrait',
+          alt: 'Screen recording of Ama qualifying a real WhatsApp lead, sending photos, and booking a viewing',
+          label: 'Real footage: Ama qualifies, sends photos, books the viewing, escalates',
         },
       },
       {
@@ -168,9 +172,11 @@ export const content = {
         ],
         media: {
           kind: 'video',
-          src: '',
-          alt: 'A 3D walkthrough of an East Legon home',
-          label: 'Walking a listing without leaving the chat',
+          src: '/media/splat-walkthrough.mp4',
+          poster: '/media/splat-walkthrough.jpg',
+          orientation: 'landscape',
+          alt: 'A recorded Gaussian-splat 3D walkthrough moving through a real interior',
+          label: 'Real capture: a Gaussian-splat tour through a listing interior',
         },
       },
       {
@@ -300,12 +306,49 @@ export const content = {
   },
 
   whatsappSim: {
-    eyebrow: 'THE FLAGSHIP, WORKING',
-    title: 'Watch Ama close a lead that came in at',
-    titleAccent: '11:47pm.',
+    eyebrow: 'THE FLAGSHIP, ON CAMERA',
+    title: 'Watch Ama work a live lead,',
+    titleAccent: 'screen-recorded.',
     subhead:
-      'A real conversation flow on real WhatsApp. The only thing simulated is the timing. Ama replies in under five seconds, waits while the lead is still typing, and answers voice notes too.',
-    caption: 'Real WhatsApp. Real AI. Real conversation.',
+      'No mock-up, no staged chat. This is a phone recording of Ama engaging a real inquiry: she answers in seconds, shares photos of homes that fit, books the viewing, and hands over to a human the moment it matters.',
+    caption: 'Recorded from the phone. Nothing staged.',
+    video: {
+      src: '/media/whatsapp-agent-demo.mp4',
+      poster: '/media/whatsapp-agent-demo.jpg',
+      alt: 'Phone screen recording of Ama engaging a WhatsApp lead, sending photos, booking a viewing, then escalating to a human',
+    },
+  },
+
+  walkthrough3d: {
+    eyebrow: 'GAUSSIAN SPLATTING · 3D WALKTHROUGHS',
+    title: 'Step inside',
+    titleAccent: 'before you visit.',
+    subhead:
+      'We capture your listing as a photoreal 3D scene using Gaussian splatting, the same technique behind film-grade scene reconstruction. Buyers walk every room from their sofa, on any phone, from a simple WhatsApp link. This is a real capture of a real interior. Drag it around.',
+    loadCta: 'Explore the live 3D tour',
+    loadHint: 'Interactive · drag to look, scroll to move',
+    iframeSrc: 'https://superspl.at/s?id=71111000',
+    iframeTitle: 'Interactive Gaussian-splat 3D walkthrough of a real interior',
+    points: [
+      { title: 'Real capture', body: 'Not a render. Reconstructed from footage of the actual property.' },
+      { title: 'Any phone, no app', body: 'Opens in the browser, straight from a WhatsApp link.' },
+      { title: 'Serious buyers only', body: 'Tyre-kickers filter themselves out before anyone drives across Accra.' },
+    ],
+    videoLabel: 'A recorded splat tour through a listing interior',
+  },
+
+  crmDesktop: {
+    eyebrow: 'UNDER THE HOOD',
+    title: 'Every conversation lands in',
+    titleAccent: 'one clean CRM.',
+    body: 'While Ama works the leads, the CRM writes itself. Open any lead and the full story is there: what they want, what they were shown, every WhatsApp message, every viewing, every follow-up. This is the live product, screen-recorded.',
+    caption: 'Real footage: a lead record with viewings and the full conversation transcript',
+    url: 'crm.agenticrealty.com',
+    video: {
+      src: '/media/crm-lead-details.mp4',
+      poster: '/media/crm-lead-details.jpg',
+      alt: 'Desktop screen recording of the CRM showing a lead’s details, viewings, and full conversation transcript',
+    },
   },
 
   howItWorks: {
@@ -336,6 +379,12 @@ export const content = {
     title: 'Your agents already know how to use it.',
     titleAccent: "It's WhatsApp.",
     body: 'The classic CRM dies because agents will not fill in forms. Agentic Realty kills that two ways. Ama fills the CRM from WhatsApp automatically, and your agents update it from the field by texting or voice-noting a bot. No new app. No training week.',
+    videoCaption: 'Real footage: a live WhatsApp conversation, filling the CRM below by itself',
+    video: {
+      src: '/media/whatsapp-agent-demo.mp4',
+      poster: '/media/whatsapp-agent-demo.jpg',
+      alt: 'Phone screen recording of a WhatsApp conversation with Ama that fills the CRM automatically as it happens',
+    },
     points: [
       'Text "add a 3-bed in East Legon, 850k for sale, owner Mr Asante" and it is in your CRM.',
       'Send a voice note from the car. It is transcribed and done.',
@@ -370,6 +419,11 @@ export const content = {
     title: 'Update your CRM by text. The killer feature.',
     body: 'Agents add a new listing, log a note, or check on a lead from their phone. Plain English, text or voice note, no laptop, no app to learn. Ama handles the leads on WhatsApp. Her twin on Telegram handles your team.',
     subcaption: 'Add a listing. Log a note. Find a lead. Without ever opening the CRM.',
+    video: {
+      src: '/media/telegram-crm-bot.mp4',
+      poster: '/media/telegram-crm-bot.jpg',
+      alt: 'Phone screen recording of an agent controlling the CRM from Telegram: creating and updating properties by chat',
+    },
   },
 
   areas: {
@@ -561,6 +615,7 @@ export const content = {
         heading: 'Product',
         items: [
           { label: 'The nine systems', href: '#services' },
+          { label: '3D walkthroughs', href: '#3d-tours' },
           { label: 'How it works', href: '#how-it-works' },
           { label: 'Proof', href: '#proof' },
           { label: 'FAQ', href: '#faq' },

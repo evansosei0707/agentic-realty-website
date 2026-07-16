@@ -8,7 +8,7 @@ import { LabelPill } from '../primitives/pill'
 import { EscalationInbox } from '../simulated-ui/escalation-inbox'
 import { TodayViewings } from '../simulated-ui/today-viewings'
 import { SystemHealth } from '../simulated-ui/system-health'
-import { TelegramThread } from '../simulated-ui/telegram-thread'
+import { PhoneFrame } from '../primitives/device-frame'
 
 ensureGsap()
 
@@ -56,7 +56,16 @@ const cards: CardConfig[] = [
     title: content.featureTelegram.title,
     body: content.featureTelegram.body,
     subcaption: content.featureTelegram.subcaption,
-    panel: <TelegramThread />,
+    panel: (
+      <div className="flex justify-center">
+        <PhoneFrame
+          src={content.featureTelegram.video.src}
+          poster={content.featureTelegram.video.poster}
+          alt={content.featureTelegram.video.alt}
+          className="w-[64%] max-w-[270px]"
+        />
+      </div>
+    ),
     layout: 'text-left',
   },
 ]

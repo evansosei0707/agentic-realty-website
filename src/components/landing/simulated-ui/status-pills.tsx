@@ -65,12 +65,12 @@ const icons: Record<string, React.ReactNode> = {
 export function StatusPills() {
   return (
     <div className="relative">
-      <div className="pills-track flex flex-row lg:flex-col gap-4 lg:gap-5 overflow-x-auto snap-x snap-mandatory lg:overflow-visible lg:snap-none -mx-5 px-5 lg:mx-0 lg:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="pills-track flex flex-col gap-4 lg:gap-5">
         {status_pills.map((p) => (
           <div
             key={p.id}
             data-pill={p.id}
-            className={`${p.id} relative rounded-[24px] md:rounded-[28px] border bg-surface-1 p-5 md:p-6 lg:p-7 min-w-[85%] sm:min-w-[60%] lg:min-w-0 snap-center min-h-[240px] md:min-h-[260px] lg:min-h-0 flex flex-col overflow-hidden shrink-0 lg:shrink`}
+            className={`${p.id} relative rounded-[24px] md:rounded-[28px] border bg-surface-1 p-5 md:p-6 lg:p-7 flex flex-col overflow-hidden`}
             // style={
             //   {
             //     '--lit-accent': '#2bcb8d',
@@ -104,8 +104,8 @@ export function StatusPills() {
               </div>
             </div>
 
-            <div className="relative mt-auto pt-10">
-              <p className="lit-desc text-[18px] md:text-[20px] leading-[1.4] tracking-[-0.01em] text-text-secondary">
+            <div className="relative mt-auto pt-5 md:pt-7">
+              <p className="lit-desc text-[15.5px] md:text-[18px] lg:text-[20px] leading-[1.4] tracking-[-0.01em] text-text-secondary">
                 {descriptions[p.id]}
               </p>
               <p className="mt-3 font-mono text-[11px] tracking-[0.04em] text-text-muted">

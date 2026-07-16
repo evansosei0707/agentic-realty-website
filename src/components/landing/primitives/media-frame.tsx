@@ -1,13 +1,15 @@
 import type { ReactNode } from 'react'
 import type { ServiceMedia } from '../../../lib/content'
+import { LazyVideo, PhoneFrame } from './device-frame'
 
 /**
  * A framed media slot with a museum-style plaque caption.
  *
- * When `media.src` is set it renders the image or video full-bleed.
- * Until then it shows a drafting-table placeholder (blueprint grid,
- * corner ticks, centred icon) so the page looks finished while the
- * real footage is being produced. Swap media in via lib/content.ts.
+ * When `media.src` is set it renders the image or video full-bleed —
+ * portrait recordings get mounted inside a phone bezel on a lit stage,
+ * landscape ones fill the frame. Until then it shows a drafting-table
+ * placeholder (blueprint grid, corner ticks, centred icon) so the page
+ * looks finished while the real footage is being produced.
  */
 export function MediaFrame({
   media,
@@ -20,22 +22,27 @@ export function MediaFrame({
   icon?: ReactNode
   className?: string
 }) {
+  const portrait = media.kind === 'video' && media.orientation === 'portrait'
+
   return (
     <figure className={`m-0 ${className}`}>
-      <div className="relative aspect-[16/10] rounded-[20px] border border-border-subtle bg-surface-2 overflow-hidden">
+      <div
+        className={`relative rounded-[20px] border border-border-subtle bg-surface-2 overflow-hidden ${
+          portrait ? 'aspect-[4/4.4] sm:aspect-[16/12]' : 'aspect-[16/10]'
+        }`}
+      >
         {media.src ? (
           media.kind === 'video' ? (
-            <video
-              className="absolute inset-0 w-full h-full object-cover"
-              src={media.src}
-              poster={media.poster}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label={media.alt}
-            />
+            portrait ? (
+              <PortraitStage media={media} />
+            ) : (
+              <LazyVideo
+                className="absolute inset-0 w-full h-full object-cover"
+                src={media.src}
+                poster={media.poster}
+                alt={media.alt}
+              />
+            )
           ) : (
             <img
               className="absolute inset-0 w-full h-full object-cover"
@@ -60,6 +67,47 @@ export function MediaFrame({
         )}
       </figcaption>
     </figure>
+  )
+}
+
+/** A phone bezel product-shot: real footage centred on a lit backdrop. */
+function PortraitStage({ media }: { media: ServiceMedia }) {
+  return (
+    <div className="absolute inset-0">
+      {/* drafting grid backdrop, echoing the placeholder language */}
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-[0.3]"
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(0deg, var(--border-subtle) 0 1px, transparent 1px 44px), repeating-linear-gradient(90deg, var(--border-subtle) 0 1px, transparent 1px 44px)',
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(50% 60% at 50% 40%, rgba(43,203,141,0.1), transparent 72%)',
+        }}
+      />
+      <div className="absolute inset-0 flex items-start justify-center pt-5 sm:pt-7">
+        <PhoneFrame
+          src={media.src}
+          poster={media.poster}
+          alt={media.alt}
+          className="w-[46%] sm:w-[38%] max-w-[230px]"
+        />
+      </div>
+      {/* bottom fade so the phone appears to sink into the plinth */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-16"
+        style={{
+          background: 'linear-gradient(180deg, transparent, var(--surface-2))',
+        }}
+      />
+    </div>
   )
 }
 

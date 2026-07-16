@@ -39,26 +39,28 @@ export function TodayViewings() {
           return (
             <li
               key={v.id}
-              className="flex items-center gap-4 py-2 border-b border-border-subtle last:border-0"
+              className="flex items-center gap-3 sm:gap-4 py-2 border-b border-border-subtle last:border-0"
             >
-              <div className="w-[56px] font-mono text-[13px] text-text-primary">
+              <div className="w-[44px] sm:w-[56px] shrink-0 font-mono text-[12.5px] sm:text-[13px] text-text-primary">
                 {timeOnly(v.scheduled_datetime)}
               </div>
-              <div className="flex items-center gap-2 w-[100px]">
+              {/* status collapses to just the dot on narrow screens */}
+              <span className={`sm:hidden w-1.5 h-1.5 rounded-full shrink-0 ${s.dot}`} />
+              <div className="hidden sm:flex items-center gap-2 w-[92px] shrink-0">
                 <span className={`w-1.5 h-1.5 rounded-full ${s.dot}`} />
                 <span className="font-mono text-[11px] text-text-secondary">
                   {s.label}
                 </span>
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-[13px] text-text-primary font-medium">
+                <div className="text-[13px] text-text-primary font-medium truncate">
                   {v.lead_name}
                 </div>
-                <div className="text-[12px] text-text-muted">
+                <div className="text-[12px] text-text-muted truncate">
                   {v.property_label}
                 </div>
               </div>
-              <div className="font-mono text-[11px] text-right flex gap-2 shrink-0">
+              <div className="font-mono text-[10.5px] sm:text-[11px] text-right flex flex-col sm:flex-row gap-0.5 sm:gap-2 shrink-0">
                 <span
                   className={
                     v.reminder_sent_24h ? 'text-primary' : 'text-text-muted'
@@ -71,7 +73,7 @@ export function TodayViewings() {
                     v.reminder_sent_2h ? 'text-primary' : 'text-text-muted'
                   }
                 >
-                  2h {v.reminder_sent_2h ? '✓' : 'pending'}
+                  2h {v.reminder_sent_2h ? '✓' : '·'}
                 </span>
               </div>
             </li>

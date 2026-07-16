@@ -31,7 +31,23 @@ export function Comparison() {
         </p>
       </div>
 
-      <div data-reveal className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+      <p
+        data-reveal
+        className="lg:hidden mb-3 font-mono text-[10.5px] uppercase tracking-[0.16em] text-text-muted"
+      >
+        Swipe to compare <span aria-hidden>→</span>
+      </p>
+
+      <div data-reveal className="relative">
+        {/* right-edge fade signals there is more table to swipe to */}
+        <div
+          aria-hidden
+          className="lg:hidden pointer-events-none absolute inset-y-0 right-0 w-12 z-10"
+          style={{
+            background: 'linear-gradient(90deg, transparent, var(--canvas))',
+          }}
+        />
+        <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
         <div className="min-w-[680px] grid grid-cols-[1.3fr_1fr_1fr_1fr] rounded-[24px] border border-border-subtle overflow-hidden">
           {/* Header row */}
           <div className="bg-surface-2 p-4 md:p-5" />
@@ -61,6 +77,7 @@ export function Comparison() {
           {c.rows.map((row, ri) => (
             <Row key={row.label} row={row} hi={hi} last={ri === c.rows.length - 1} />
           ))}
+        </div>
         </div>
       </div>
     </section>

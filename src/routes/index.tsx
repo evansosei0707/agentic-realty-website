@@ -5,6 +5,7 @@ import { LogoStrip } from '../components/landing/logos/logo-strip'
 import { Problem } from '../components/landing/problem/problem'
 import { Services } from '../components/landing/services/services'
 import { WhatsAppSimulation } from '../components/landing/simulated-ui/whatsapp-simulation'
+import { Walkthrough3D } from '../components/landing/walkthrough-3d/walkthrough-3d'
 import { HowItWorks } from '../components/landing/workflow-diagram/how-it-works'
 import { Neighborhoods } from '../components/landing/neighborhoods/neighborhoods'
 import { FeatureStack } from '../components/landing/feature-card/feature-stack'
@@ -47,6 +48,7 @@ function Home() {
         <Problem />
         <Services />
         <WhatsAppSimulation />
+        <Walkthrough3D />
         <HowItWorks />
         <Neighborhoods />
         <FeatureStack />

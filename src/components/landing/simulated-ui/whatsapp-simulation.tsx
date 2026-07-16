@@ -3,11 +3,10 @@ import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ensureGsap } from '../../../lib/gsap-init'
-import { observeOnce } from '../../../lib/use-reveal'
 import { content } from '../../../lib/content'
-import { ConversationThread } from './conversation-thread'
 import { StatusPills } from './status-pills'
 import { LabelPill } from '../primitives/pill'
+import { PhoneFrame } from '../primitives/device-frame'
 
 ensureGsap()
 
@@ -21,7 +20,6 @@ export function WhatsAppSimulation() {
       ).matches
 
       const root = ref.current!
-      const msgs = root.querySelectorAll<HTMLElement>('.msg')
       const pairFor = (id: string) =>
         Array.from(
           root.querySelectorAll<HTMLElement>(
@@ -35,7 +33,6 @@ export function WhatsAppSimulation() {
       }
 
       const setFinal = () => {
-        gsap.set(msgs, { autoAlpha: 1, y: 0 })
         Object.values(pillEls).forEach(
           (els) =>
             els.length && gsap.set(els, { '--lit': 1 } as gsap.TweenVars),
@@ -46,20 +43,6 @@ export function WhatsAppSimulation() {
         setFinal()
         return
       }
-
-      gsap.set(msgs, { autoAlpha: 0, y: 16 })
-
-      // IO-based reveal (not ScrollTrigger): stays correct through instant
-      // anchor jumps, where scroll bookkeeping can leave messages invisible.
-      observeOnce(Array.from(msgs), (el, i) => {
-        gsap.to(el, {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.55,
-          delay: (i % 4) * 0.1,
-          ease: 'power2.out',
-        })
-      })
 
       ScrollTrigger.create({
         trigger: root,
@@ -115,9 +98,17 @@ export function WhatsAppSimulation() {
             aria-hidden
             className="liquid-panel-glow pointer-events-none absolute -top-32 -right-32 w-[440px] h-[440px] rounded-full"
           />
-          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
-            <div className="[perspective:1200px]">
-              <ConversationThread />
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+            <div className="flex flex-col items-center">
+              <PhoneFrame
+                src={content.whatsappSim.video.src}
+                poster={content.whatsappSim.video.poster}
+                alt={content.whatsappSim.video.alt}
+                className="w-[72%] max-w-[290px] sm:max-w-[310px]"
+              />
+              <p className="mt-6 font-mono text-[10.5px] uppercase tracking-[0.18em] text-text-muted text-center">
+                {content.whatsappSim.caption}
+              </p>
             </div>
             <div>
               <StatusPills />
